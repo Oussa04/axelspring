@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<data>
+    <import type="android.view.View"/>
+    <variable name="teaser" type="com.example.axel.data.Teaser" />
+    <variable name="itemClickListener" type="com.example.axel.ui.ItemClickListener"/>
+</data>
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="#35323A"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="0dp"
+        app:contentPadding="15dp"
+        android:onClick="@{() ->  itemClickListener.onClick(teaser)}">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView_teaser_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/merriweather_bold"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:text="@{teaser.title}"
+                />
+
+            <TextView
+                android:id="@+id/textView_teaser_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/merriweather"
+                android:lines="2"
+                android:text="@{teaser.text}"
+                android:textColor="#cdced3"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/textView_teaser_isPaid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/merriweather"
+                android:text='@{teaser.isPaid() ?  "paid content" :  "free content"  }'
+                android:textColor="#cdced3"
+                android:textSize="12sp"
+                />
+
+            <Button
+                android:id="@+id/button_buySubscription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:text="Buy Subscripition"
+                android:visibility="@{teaser.isPaid()? View.VISIBLE : View.GONE }"
+                />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
+</layout>

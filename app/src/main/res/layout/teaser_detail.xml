@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.view.View"/>
+        <variable name="teaser" type="com.example.axel.data.Teaser"/>
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme"
+                app:navigationIcon="?attr/homeAsUpIndicator"
+                app:title="Headlines"
+                app:titleTextColor="@android:color/white" />
+
+            <TextView
+                    android:id="@+id/textView_teaser_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/merriweather_bold"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    android:text="@{teaser.title}"
+                    android:layout_margin="22dp"
+                    />
+
+                <TextView
+
+                    android:background="@drawable/layout_bg"
+                    android:id="@+id/textView_teaser_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/merriweather"
+                    android:text="@{teaser.text}"
+                    android:textColor="#cdced3"
+                    android:textSize="18sp"
+                    />
+            </LinearLayout>
+
+
+    </FrameLayout>
+
+
+</layout>
